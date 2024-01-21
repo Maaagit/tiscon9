@@ -11,7 +11,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -68,8 +72,9 @@ public class EstimateService {
      *
      * @param dto 見積もり依頼情報
      * @return 概算見積もり結果の料金
+     * @throws ParseException 
      */
-    public Integer getPrice(UserOrderDto dto) {
+    public Integer getPrice(UserOrderDto dto) throws ParseException {
         double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
         // 小数点以下を切り捨てる
         int distanceInt = (int) Math.floor(distance);
@@ -84,7 +89,42 @@ public class EstimateService {
 
         // 箱に応じてトラックの種類が変わり、それに応じて料金が変わるためトラック料金を算出する。
         int pricePerTruck = estimateDAO.getPricePerTruck(boxes);
-
+        // 日付をもとに季節係数を算出する
+        int seasonFordate;
+        try {
+            String strDate = dto.getDate();
+         
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = sdf.parse(strDate);
+            Calendar cl = Calendar.getInstance();
+        
+            cl.setTime(date);
+            
+            System.out.println("文字列 = " + strDate);
+            System.out.println("日付型 = " + date);
+            seasonFordate=cl.get(Calendar.MONTH)+ 1;
+        } catch (ParseException e) {
+            //例外処理
+    
+                throw e;
+            
+        }
+        // 3,4月=１.５　
+        // 9月＝1.2
+        //その他＝1
+        double n;
+        switch(seasonFordate){
+            case 3:
+            case 4:
+              n=1.5;
+              break;
+            case 9:
+              n=1.2;
+              break;
+            default:
+              n=1.0;
+        }
+            
         // オプションサービスの料金を算出する。
         int priceForOptionalService = 0;
 
@@ -92,7 +132,7 @@ public class EstimateService {
             priceForOptionalService = estimateDAO.getPricePerOptionalService(OptionalServiceType.WASHING_MACHINE.getCode());
         }
 
-        return priceForDistance + pricePerTruck + priceForOptionalService; //あとでN追加
+        return (int)((priceForDistance + pricePerTruck)* n)+ priceForOptionalService; 
     }
 
     /**

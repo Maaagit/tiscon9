@@ -4,6 +4,9 @@ import com.tiscon.dao.EstimateDao;
 import com.tiscon.dto.UserOrderDto;
 import com.tiscon.form.UserOrderForm;
 import com.tiscon.service.EstimateService;
+
+import java.text.ParseException;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -117,9 +120,10 @@ public class EstimateController {
      * @param result        精査結果
      * @param model         遷移先に連携するデータ
      * @return 遷移先
+     * @throws ParseException 
      */
     @PostMapping(value = "result", params = "calculation")
-    String calculation(@Validated UserOrderForm userOrderForm, BindingResult result, Model model) {
+    String calculation(@Validated UserOrderForm userOrderForm, BindingResult result, Model model) throws ParseException {
         if (result.hasErrors()) {
 
             model.addAttribute("prefectures", estimateDAO.getAllPrefectures());

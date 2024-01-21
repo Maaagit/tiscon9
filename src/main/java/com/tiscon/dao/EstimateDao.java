@@ -136,7 +136,7 @@ public class EstimateDao {
     }
 
     /**
-     * 引っ越し予定を考慮した料金を取得する。
+     * 引っ越し予定日を考慮した季節係数を取得する。
      *
      * @param date 引っ越し予定日
      * @return seasonNum 季節係数
