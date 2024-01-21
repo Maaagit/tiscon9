@@ -27,7 +27,8 @@
       <fieldset>
         <div class="sub-title">引っ越し予定日</div>
       </br>
-        <input type="date" min="2024-01-20" max="2124-01-20"></input>
+        <input type="date" id="date" min="2024-01-20" max="2124-01-20" name="date" th:field="*{date}"
+                 class="form-control" value=""/>
 
         <div class="sub-title">集荷元・お届け先</div>
         <div class="form-group">

@@ -4,6 +4,8 @@ public class UserOrderDto {
 
     private String customerName;
 
+    private String date;
+
     private String tel;
 
     private String email;
