@@ -2,7 +2,7 @@ package com.tiscon.form;
 
 import com.tiscon.validator.Numeric;
 
-import javax.validation.constraints.Email;
+// import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -13,19 +13,19 @@ import javax.validation.constraints.NotNull;
  */
 public class UserOrderForm {
 
-    @NotBlank
-    private String customerName;
+    // @NotBlank
+    // private String customerName;
 
     @NotBlank
     private String date;
 
-    @NotBlank
-    @Numeric
-    private String tel;
+    // @NotBlank
+    // @Numeric
+    // private String tel;
 
-    @Email
-    @NotBlank
-    private String email;
+    // @Email
+    // @NotBlank
+    // private String email;
 
     @NotBlank
     private String oldPrefectureId;
@@ -58,9 +58,9 @@ public class UserOrderForm {
     @NotNull
     private boolean washingMachineInstallation;
 
-    public String getCustomerName() {
-        return customerName;
-    }
+    // public String getCustomerName() {
+    //     return customerName;
+    // }
 
     public String getDate() {
         return date;
@@ -70,25 +70,25 @@ public class UserOrderForm {
         this.date = date;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
+    // public void setCustomerName(String customerName) {
+    //     this.customerName = customerName;
+    // }
 
-    public String getTel() {
-        return tel;
-    }
+    // public String getTel() {
+    //     return tel;
+    // }
 
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
+    // public void setTel(String tel) {
+    //     this.tel = tel;
+    // }
 
-    public String getEmail() {
-        return email;
-    }
+    // public String getEmail() {
+    //     return email;
+    // }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    // public void setEmail(String email) {
+    //     this.email = email;
+    // }
 
     public String getOldPrefectureId() {
         return oldPrefectureId;

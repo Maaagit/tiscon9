@@ -28,6 +28,14 @@ public class UserOrderDto {
 
     private boolean washingMachineInstallation;
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getCustomerName() {
         return customerName;
     }

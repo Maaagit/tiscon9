@@ -10,9 +10,10 @@ CREATE TABLE IF NOT EXISTS CUSTOMER
     CUSTOMER_ID                     INT NOT NULL AUTO_INCREMENT,
     OLD_PREFECTURE_ID               CHAR(2) NOT NULL,
     NEW_PREFECTURE_ID               CHAR(2) NOT NULL,
-    CUSTOMER_NAME                   VARCHAR(60) NOT NULL,
-    TEL                             VARCHAR(11) NOT NULL,
-    EMAIL                           VARCHAR(256) NOT NULL,
+    CUSTOMER_NAME                   VARCHAR(60),
+    DATE                            VARCHAR(10),
+    TEL                             VARCHAR(11),
+    EMAIL                           VARCHAR(256),
     OLD_ADDRESS                     VARCHAR(200) NOT NULL,
     NEW_ADDRESS                     VARCHAR(200) NOT NULL,
     PRIMARY KEY (CUSTOMER_ID)

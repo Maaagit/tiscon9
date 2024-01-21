@@ -54,6 +54,10 @@ public class Customer implements Serializable {
         return date;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
