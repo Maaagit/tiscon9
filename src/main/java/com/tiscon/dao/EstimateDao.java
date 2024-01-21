@@ -37,7 +37,7 @@ public class EstimateDao {
      * @return 登録件数
      */
     public int insertCustomer(Customer customer) {
-        String sql = "INSERT INTO CUSTOMER(OLD_PREFECTURE_ID, NEW_PREFECTURE_ID, CUSTOMER_NAME, TEL, EMAIL, OLD_ADDRESS, NEW_ADDRESS)"
+        String sql = "INSERT INTO CUSTOMER(OLD_PREFECTURE_ID, NEW_PREFECTURE_ID, CUSTOMER_NAME, DATE, TEL, EMAIL, OLD_ADDRESS, NEW_ADDRESS)"
                 + " VALUES(:oldPrefectureId, :newPrefectureId, :customerName, :date, :tel, :email, :oldAddress, :newAddress)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int resultNum = parameterJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(customer), keyHolder);
@@ -132,6 +132,19 @@ public class EstimateDao {
         String sql = "SELECT PRICE FROM TRUCK_CAPACITY WHERE MAX_BOX >= :boxNum ORDER BY PRICE LIMIT 1";
 
         SqlParameterSource paramSource = new MapSqlParameterSource("boxNum", boxNum);
+        return parameterJdbcTemplate.queryForObject(sql, paramSource, Integer.class);
+    }
+
+    /**
+     * 引っ越し予定を考慮した料金を取得する。
+     *
+     * @param date 引っ越し予定日
+     * @return seasonNum 季節係数
+     */
+    public int getseasonNum (int date) {
+        String sql = "SELECT PRICE FROM TRUCK_CAPACITY WHERE MAX_BOX >= :boxNum ORDER BY PRICE LIMIT 1";
+
+        SqlParameterSource paramSource = new MapSqlParameterSource("boxNum", date);
         return parameterJdbcTemplate.queryForObject(sql, paramSource, Integer.class);
     }
 
