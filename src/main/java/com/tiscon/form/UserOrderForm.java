@@ -17,6 +17,9 @@ public class UserOrderForm {
     private String customerName;
 
     @NotBlank
+    private String date;
+
+    @NotBlank
     @Numeric
     private String tel;
 
@@ -57,6 +60,14 @@ public class UserOrderForm {
 
     public String getCustomerName() {
         return customerName;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setCustomerName(String customerName) {

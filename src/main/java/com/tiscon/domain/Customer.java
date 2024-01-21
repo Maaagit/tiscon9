@@ -12,6 +12,8 @@ public class Customer implements Serializable {
 
     private String customerName;
 
+    private String date;
+
     private String tel;
 
     private String email;
@@ -46,6 +48,10 @@ public class Customer implements Serializable {
 
     public String getCustomerName() {
         return customerName;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public void setCustomerName(String customerName) {

@@ -26,28 +26,17 @@
       この内容でお見積りする場合は、「概算お見積もりをする」ボタンを押してください。
     </div>
     <div class="col-sm-12">
-      <div class="sub-title">お客様情報</div>
+      <div class="sub-title">引越し予定日</div>
       <table class="table table-bordered">
         <col span="1" style="background-color: #FFFFFF;">
         <col span="2" style="background-color: #FFFFFF;">
         <tbody>
         <tr>
-          <th style="width: 40%">氏名</th>
+          <th style="width: 40%">引越し予定日</th>
           <td>
-            <span th:text="*{customerName}" />
+            <span th:text="*{date}" />
           </td>
-          <input type="hidden" name="customerName" id="customerName" th:value="*{customerName}"/>
-        </tr>
-        <tr>
-          <th>連絡先TEL</th>
-          <td><span th:text="*{tel}"></span></td>
-          <input type="hidden" name="tel" id="tel" th:value="*{tel}"/>
-        </tr>
-        <tr>
-          <th>連絡先メールアドレス</th>
-          <td><span th:text="*{email}"></span></td>
-          <input type="hidden" name="email" id="email" th:value="*{email}"/>
-        </tr>
+          <input type="hidden" name="date" id="date" th:value="*{date}"/>
       </tbody>
       </table>
     </div>
