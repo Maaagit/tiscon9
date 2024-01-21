@@ -307,3 +307,9 @@ td {
     border-radius: .28571429rem;
     border: 1px solid rgba(34,36,38,.15);
 }
+
+.radio-button{
+    position: relative;
+    margin: 30px;
+    transform:scale(2);
+}
