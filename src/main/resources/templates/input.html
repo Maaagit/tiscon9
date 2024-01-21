@@ -20,16 +20,13 @@
     <div class="page-title">
       お見積り情報入力
     </div>
-    <ul th:if="${#fields.hasErrors('all')}">
-      <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li>
-    </ul>
+    <h1 th:if="${#fields.hasErrors('all')}">入力に誤りがあります。</h1>
     <div class="col-sm-12">
       <fieldset>
         <div class="sub-title">引っ越し予定日</div>
       </br>
         <input type="date" id="date" min="2024-01-20" max="2124-01-20" name="date" th:field="*{date}"
                  class="form-control" value=""/>
-
         <div class="sub-title">集荷元・お届け先</div>
         <div class="form-group">
           <label for="oldPrefectureId">集荷元住所（都道府県）</label>
@@ -39,6 +36,9 @@
         </div>
         <div class="form-group">
           <label for="oldAddress">集荷元住所（市区町村以下）</label>
+          <ul th:if="${#fields.hasErrors('oldAddress')}">
+            <li th:each="err:${#fields.errors('oldAddress')}" th:text="${err}"></li>
+          </ul>
           <input type="text" id="oldAddress" name="oldAddress" th:field="*{oldAddress}"
                  class="form-control" value="新宿区西新宿1-1-1"/>
         </div>
@@ -50,6 +50,9 @@
         </div>
         <div class="form-group">
           <label for="newAddress">お届け先住所（市区町村以下）</label>
+          <ul th:if="${#fields.hasErrors('newAddress')}">
+            <li th:each="err:${#fields.errors('newAddress')}" th:text="${err}"></li>
+          </ul>
           <input type="text" id="newAddress" name="newAddress" th:field="*{newAddress}" class="form-control"
                  value="札幌市南区1"/>
         </div>
@@ -58,20 +61,47 @@
       <div class="sub-title">お荷物情報</div>
         <div class="form-group">
           <label for="box">段ボールの個数</label>
-          <input type="number" id="box" name="box" th:field="*{box}" class="form-control" value="10"/>
+          <ul th:if="${#fields.hasErrors('box')}">
+            <li th:each="err:${#fields.errors('box')}" th:text="${err}"></li>
+          </ul>
+          <input type="text" id="box" name="box" th:field="*{box}" class="form-control" value="10"/>
         </div>
         <div class="form-group">
           <label for="bed">ベッドの個数</label>
-          <input type="number" id="bed" name="bed" th:field="*{bed}" class="form-control" value="3"/>
+          <ul th:if="${#fields.hasErrors('bed')}">
+            <li th:each="err:${#fields.errors('bed')}" th:text="${err}"></li>
+          </ul>
+          <br>
+          <input type="radio" id="bed" name="bed" th:field="*{bed}" class="radio-button" value="0"/>0個
+          <input type="radio" id="bed" name="bed" th:field="*{bed}" class="radio-button" value="1"/>1個
+          <input type="radio" id="bed" name="bed" th:field="*{bed}" class="radio-button" value="2"/>2個
+          <input type="radio" id="bed" name="bed" th:field="*{bed}" class="radio-button" value="3"/>3個
         </div>
         <div class="form-group">
           <label for="bicycle">自転車の個数</label>
-          <input type="number" id="bicycle" name="bicycle" th:field="*{bicycle}" class="form-control" value="1"/>
+          <ul th:if="${#fields.hasErrors('bicycle')}">
+            <li th:each="err:${#fields.errors('bicycle')}" th:text="${err}"></li>
+          </ul>
+          <br>
+          <input type="radio" id="bicycle" name="bicycle" th:field="*{bicycle}" class="radio-button" value="0"/>0台
+          <input type="radio" id="bicycle" name="bicycle" th:field="*{bicycle}" class="radio-button" value="1"/>1台
+          <input type="radio" id="bicycle" name="bicycle" th:field="*{bicycle}" class="radio-button" value="2"/>2台
+          <input type="radio" id="bicycle" name="bicycle" th:field="*{bicycle}" class="radio-button" value="3"/>3台
         </div>
         <div class="form-group">
           <label for="washingMachine">洗濯機の個数</label>
-          <input type="number" id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="form-control"
-                 value="1"/>
+          <ul th:if="${#fields.hasErrors('washingMachine')}">
+            <li th:each="err:${#fields.errors('washingMachine')}" th:text="${err}"></li>
+          </ul>
+          <br>
+          <input type="radio" id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="radio-button"
+                 value="0"/>0個
+          <input type="radio" id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="radio-button"
+                 value="1"/>1個
+          <input type="radio" id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="radio-button"
+                 value="2"/>2個
+          <input type="radio" id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="radio-button"
+                 value="3"/>3個
         </div>
         <div class="form-group">
           <label for="washingMachineInstallation">洗濯機の設置工事申し込み</label>
